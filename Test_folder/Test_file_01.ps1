@@ -1,2 +1,2 @@
 Get-ChildItem C:\
-Get-ChildItem -Directory C:\
+Get-ChildItem -File C:\
