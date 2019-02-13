@@ -1,6 +1,5 @@
 # 1.1.	Сохранить в текстовый файл на созданном диске список запущенных(!) служб.
 
-
 [CmdletBinding()]
 Param(
     [parameter(Mandatory=$true,HelpMessage='Enter status of service')]
@@ -17,12 +16,29 @@ Get-Service | Where-Object {$_.Status -eq "$Status"}  | Out-File "$File"
 Get-ChildItem "C:\"
 Get-Content "$File"
 
+
+
 # 1.2.	Просуммировать все числовые значения переменных среды Windows. (Параметры не нужны)
  
- #Не нашёл подходящего решения - Get-ChildItem env: - позволяет получить список Windows переменных,но получить их значение уже не удается..
- #вычисление всех переменных сеанса проходит так
-
+ #Не нашёл подходящего решения - вывожу список числовых значений Windows переменных с помощью скрипта ниже,но не могу докрутить до суммы..
+ 
+ $allenv= Get-Childitem env:
+ $tempenv=0
+ foreach ($env in $allenv) {
+     try {
+         $tempenv=[int]($env.value) 
+         Write-Host $tempenv
+     }
+     catch {
+         $i++
+     }
+ }
+ 
+  #вычисление всех переменных сеанса проходит так
+ 
  Get-Variable | Where-Object {$_.Value -and $_.Value.GetType().Name -eq "Int32"}|Measure-Object -Property Value -Sum 
+ 
+  
 
 # 1.3 Вывести список из 10 процессов занимающих дольше всего процессор.Результат записывать в файл.
 
