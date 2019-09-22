@@ -1,1 +1,2 @@
 Hello branch_02!
+Hello hello_master!
