@@ -2,4 +2,3 @@ Hello branch_02!
 Hello branch_02_again!
 Hello branch_02_again_and_again!
 Hello branch_02_again_and_again!
-Hello branch_02_again_and_again!
